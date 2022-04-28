@@ -21,6 +21,7 @@ namespace YoutubeMixSplitter
         private string youtubeVideoLink = "";
         private string mp4file = "tmp.mp4";
         private string mp3file = "tmp.mp3";
+        private string outputFolder = "tmp";
 
         private void initializeVars()
         {
@@ -39,18 +40,35 @@ namespace YoutubeMixSplitter
             {
                 case "Youtube Video Mix Link":
                     
-                    YoutubeVideoInfo youtubeVideoInfo = YoutubeVideo.Youtube2mp4(sourceURL);
+                    YoutubeVideoInfo youtubeVideoInfo = YoutubeVideoHandler.YoutubeToMp4(sourceURL,outputFolder);
                     mp4file = youtubeVideoInfo.videoFile;
-                    mp3file = youtubeVideoInfo.videoName + ".mp3";
-                    break;
-                case "MP4 Video File": 
+                    mp3file = outputFolder + "\\" + youtubeVideoInfo.videoName + ".mp3";
+                    Mp4FileHandler.mp4ToMp3(mp4file, mp3file);
 
                     break;
+                case "MP4 Video File":
+                    mp3file = outputFolder + "\\" + Path.GetFileNameWithoutExtension(sourceURL);
+                    Mp4FileHandler.mp4ToMp3(sourceURL, mp3file);
+                    break;
                 case "MP3 File":
+
                     break;
                 default: 
                     break;
+            }
+            if (ckDeleteTemporal.Checked)
+            {
+                File.Delete(mp4file);
+                File.Delete(mp3file);
+            }
+
+
+
+
+
+
+
+
         }
-    }
     }
 }

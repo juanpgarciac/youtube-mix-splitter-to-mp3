@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
     <PackageReference Include="VideoLibrary" Version="3.1.9" />
   </ItemGroup>
 

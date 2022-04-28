@@ -16,10 +16,10 @@ namespace YoutubeMixSplitter
             this.videoName = _videoName; 
         }
     }
-    internal class YoutubeVideo
+    internal class YoutubeVideoHandler
     {
 
-        static public YoutubeVideoInfo Youtube2mp4(string link, string outputFolder = "tmp")
+        static public YoutubeVideoInfo YoutubeToMp4(string link, string outputFolder = "tmp")
         {
             YouTubeVideo video = YouTube.Default.GetVideo(link);
             
@@ -32,7 +32,8 @@ namespace YoutubeMixSplitter
 
             string videoFile = outputFolder +"\\"+ videoName + video.FileExtension;
 
-            File.WriteAllBytes(videoFile, video.GetBytes());
+            if(!File.Exists(videoFile))
+                File.WriteAllBytes(videoFile, video.GetBytes());
 
             return new YoutubeVideoInfo(videoFile,videoName);
         }

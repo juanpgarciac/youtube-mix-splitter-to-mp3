@@ -42,6 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.ckDeleteTemporal = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // tbSourceURL
@@ -128,7 +129,7 @@
             // 
             // btnSplit
             // 
-            this.btnSplit.Location = new System.Drawing.Point(33, 415);
+            this.btnSplit.Location = new System.Drawing.Point(33, 459);
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.Size = new System.Drawing.Size(110, 23);
             this.btnSplit.TabIndex = 10;
@@ -138,7 +139,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(33, 477);
+            this.progressBar1.Location = new System.Drawing.Point(33, 512);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(483, 23);
             this.progressBar1.TabIndex = 11;
@@ -146,7 +147,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 459);
+            this.label5.Location = new System.Drawing.Point(33, 494);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 12;
@@ -169,11 +170,24 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Waiting";
             // 
+            // ckDeleteTemporal
+            // 
+            this.ckDeleteTemporal.AutoSize = true;
+            this.ckDeleteTemporal.Checked = true;
+            this.ckDeleteTemporal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckDeleteTemporal.Location = new System.Drawing.Point(33, 403);
+            this.ckDeleteTemporal.Name = "ckDeleteTemporal";
+            this.ckDeleteTemporal.Size = new System.Drawing.Size(222, 19);
+            this.ckDeleteTemporal.TabIndex = 15;
+            this.ckDeleteTemporal.Text = "Delete temporal files after conversion";
+            this.ckDeleteTemporal.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 512);
+            this.ClientSize = new System.Drawing.Size(553, 547);
+            this.Controls.Add(this.ckDeleteTemporal);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
@@ -210,5 +224,6 @@
         private Label label5;
         private TextBox textBox3;
         private Label label6;
+        private CheckBox ckDeleteTemporal;
     }
 }

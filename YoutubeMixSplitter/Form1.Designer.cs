@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbSourceURL = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbMixSourceType = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSplit = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbSourceURL
             // 
-            this.textBox1.Location = new System.Drawing.Point(33, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(371, 23);
-            this.textBox1.TabIndex = 1;
+            this.tbSourceURL.Location = new System.Drawing.Point(33, 92);
+            this.tbSourceURL.Name = "tbSourceURL";
+            this.tbSourceURL.Size = new System.Drawing.Size(371, 23);
+            this.tbSourceURL.TabIndex = 1;
             // 
             // label1
             // 
@@ -78,17 +79,17 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Input the song list (each item with format hh:mm:ss [song name]):";
             // 
-            // comboBox1
+            // cbMixSourceType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbMixSourceType.FormattingEnabled = true;
+            this.cbMixSourceType.Items.AddRange(new object[] {
             "Youtube Video Mix Link",
             "MP4 Video File ",
             "MP3 File"});
-            this.comboBox1.Location = new System.Drawing.Point(33, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(371, 23);
-            this.comboBox1.TabIndex = 0;
+            this.cbMixSourceType.Location = new System.Drawing.Point(33, 32);
+            this.cbMixSourceType.Name = "cbMixSourceType";
+            this.cbMixSourceType.Size = new System.Drawing.Size(371, 23);
+            this.cbMixSourceType.TabIndex = 0;
             // 
             // button1
             // 
@@ -125,14 +126,15 @@
             this.button2.Text = "Select directory";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnSplit
             // 
-            this.button3.Location = new System.Drawing.Point(33, 415);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Split the mix";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSplit.Location = new System.Drawing.Point(33, 415);
+            this.btnSplit.Name = "btnSplit";
+            this.btnSplit.Size = new System.Drawing.Size(110, 23);
+            this.btnSplit.TabIndex = 10;
+            this.btnSplit.Text = "Split the mix";
+            this.btnSplit.UseVisualStyleBackColor = true;
+            this.btnSplit.Click += new System.EventHandler(this.btnSplit_Click);
             // 
             // progressBar1
             // 
@@ -158,15 +160,25 @@
             this.textBox3.Size = new System.Drawing.Size(485, 210);
             this.textBox3.TabIndex = 13;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(477, 459);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 15);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Waiting";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 512);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnSplit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label4);
@@ -174,8 +186,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.tbSourceURL);
+            this.Controls.Add(this.cbMixSourceType);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -184,18 +196,19 @@
         }
 
         #endregion
-        private TextBox textBox1;
+        private TextBox tbSourceURL;
         private Label label1;
         private Label label2;
         private Label label3;
-        private ComboBox comboBox1;
+        private ComboBox cbMixSourceType;
         private Button button1;
         private Label label4;
         private TextBox textBox2;
         private Button button2;
-        private Button button3;
+        private Button btnSplit;
         private ProgressBar progressBar1;
         private Label label5;
         private TextBox textBox3;
+        private Label label6;
     }
 }

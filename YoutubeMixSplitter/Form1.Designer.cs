@@ -38,10 +38,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btnSplit = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbStatus = new System.Windows.Forms.Label();
             this.ckDeleteTemporal = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -51,6 +51,7 @@
             this.tbSourceURL.Name = "tbSourceURL";
             this.tbSourceURL.Size = new System.Drawing.Size(371, 23);
             this.tbSourceURL.TabIndex = 1;
+            this.tbSourceURL.Text = "https://www.youtube.com/watch?v=m4wllxpGKew";
             // 
             // label1
             // 
@@ -137,12 +138,13 @@
             this.btnSplit.UseVisualStyleBackColor = true;
             this.btnSplit.Click += new System.EventHandler(this.btnSplit_Click);
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(33, 512);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(483, 23);
-            this.progressBar1.TabIndex = 11;
+            this.progressBar.Location = new System.Drawing.Point(33, 512);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(483, 23);
+            this.progressBar.TabIndex = 11;
+            this.progressBar.UseWaitCursor = true;
             // 
             // label5
             // 
@@ -161,14 +163,14 @@
             this.textBox3.Size = new System.Drawing.Size(485, 210);
             this.textBox3.TabIndex = 13;
             // 
-            // label6
+            // lbStatus
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(477, 459);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 15);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Waiting";
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(94, 494);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(48, 15);
+            this.lbStatus.TabIndex = 14;
+            this.lbStatus.Text = "Waiting";
             // 
             // ckDeleteTemporal
             // 
@@ -188,10 +190,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 547);
             this.Controls.Add(this.ckDeleteTemporal);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnSplit);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
@@ -225,5 +227,7 @@
         private TextBox textBox3;
         private Label label6;
         private CheckBox ckDeleteTemporal;
+        private ProgressBar progressBar;
+        private Label lbStatus;
     }
 }

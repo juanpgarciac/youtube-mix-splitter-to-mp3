@@ -29,8 +29,8 @@ namespace YoutubeMixSplitter
         private void freeGUI(object sender, RunWorkerCompletedEventArgs e)
         {
             lbStatus.Text = "Done!";
-            this.Enabled = true;
-            progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            pnOptions.Enabled = true;
+            progressBar.Style = System.Windows.Forms.ProgressBarStyle.Blocks;
             if (ckDeleteTemporal.Checked)
             {
                 if (File.Exists(mp4file))
@@ -62,7 +62,7 @@ namespace YoutubeMixSplitter
             {
                 MessageBox.Show(this,"The source URL should not be empty", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            this.Enabled = false; //Disable ourselves
+            pnOptions.Enabled = false; //Disable options
             progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
 
             switch (cbMixSourceType.SelectedItem.ToString())
@@ -95,6 +95,57 @@ namespace YoutubeMixSplitter
 
 
 
+        }
+        private List<Song> songs;
+        private void button3_Click(object sender, EventArgs e)
+        {
+            btnSplit.Enabled = false;
+            string songList = tbSongList.Text;
+            if (String.IsNullOrEmpty(songList))
+            {
+                MessageBox.Show(this, "The song list should not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string[] songsStrs = songList.Split("\n");
+            songs = new List<Song>();
+            Song curSong = null;
+            Song prevSong = null;
+            try
+            {
+                for (int i = 0; i < songsStrs.Length; i++)
+                {
+                    curSong = new Song(songsStrs[i]);
+                    if (curSong != null)
+                    {
+                        if (prevSong != null)
+                        {
+                            prevSong.setNextSong(curSong);
+                        }
+                        prevSong = curSong;
+                        songs.Add(curSong);
+                    }
+                }
+                lbStatus.Text = songs.Count + " songs formatted in the list";
+                if(songs.Count > 0)
+                {
+                    btnSplit.Enabled = true;
+                    MessageBox.Show(this, "The song list format seems nice, now press the Split button to start the process, then wait (patienly)");
+                }
+                else
+                {
+                    MessageBox.Show(this, "No songs list detected in the list, you add any?", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
+                }
+                
+            }
+            catch (Exception err)
+            {
+                
+                MessageBox.Show(this, "The was an error, please check the song's list format:\n"+err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbStatus.Text ="The was an error, please check the song's list format";
+            }
+
+            
         }
     }
 }

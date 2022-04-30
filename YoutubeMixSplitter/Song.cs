@@ -57,6 +57,9 @@ namespace YoutubeMixSplitter
         private int number;
 
         private Song nextSong;
+
+        public string Name { get => name; set => name = value; }
+
         public Song(string originalStr)
         {
             List<string> ostr = originalStr.Split(" ").ToList();
@@ -68,7 +71,7 @@ namespace YoutubeMixSplitter
             {
                 //MessageBox.Show(match.Value);
                 ostr.RemoveAt(0);
-                this.name = string.Join(" ",ostr);
+                this.Name = string.Join(" ",ostr);
                 startTime = new SongTime(match.Value);
             }
             else
@@ -91,7 +94,7 @@ namespace YoutubeMixSplitter
 
         public string songStr()
         {
-            return startTime.theTime() + " " + name;
+            return startTime.theTime() + " " + Name;
         }
 
     }

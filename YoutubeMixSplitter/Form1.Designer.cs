@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbMixSourceType = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btSelectFile = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -46,6 +46,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnOptions = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.pnOptions.SuspendLayout();
             this.SuspendLayout();
@@ -91,21 +92,23 @@
             this.cbMixSourceType.FormattingEnabled = true;
             this.cbMixSourceType.Items.AddRange(new object[] {
             "Youtube Video Mix Link",
-            "MP4 Video File ",
+            "MP4 Video File",
             "MP3 File"});
             this.cbMixSourceType.Location = new System.Drawing.Point(27, 34);
             this.cbMixSourceType.Name = "cbMixSourceType";
             this.cbMixSourceType.Size = new System.Drawing.Size(371, 23);
             this.cbMixSourceType.TabIndex = 0;
+            this.cbMixSourceType.SelectedIndexChanged += new System.EventHandler(this.cbMixSourceType_SelectedIndexChanged);
             // 
-            // button1
+            // btSelectFile
             // 
-            this.button1.Location = new System.Drawing.Point(404, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Select file";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btSelectFile.Location = new System.Drawing.Point(404, 93);
+            this.btSelectFile.Name = "btSelectFile";
+            this.btSelectFile.Size = new System.Drawing.Size(106, 23);
+            this.btSelectFile.TabIndex = 6;
+            this.btSelectFile.Text = "Select file";
+            this.btSelectFile.UseVisualStyleBackColor = true;
+            this.btSelectFile.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -183,8 +186,6 @@
             // ckDeleteTemporal
             // 
             this.ckDeleteTemporal.AutoSize = true;
-            this.ckDeleteTemporal.Checked = true;
-            this.ckDeleteTemporal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckDeleteTemporal.Location = new System.Drawing.Point(27, 405);
             this.ckDeleteTemporal.Name = "ckDeleteTemporal";
             this.ckDeleteTemporal.Size = new System.Drawing.Size(222, 19);
@@ -223,7 +224,7 @@
             this.pnOptions.Controls.Add(this.tbSongList);
             this.pnOptions.Controls.Add(this.label3);
             this.pnOptions.Controls.Add(this.btnSplit);
-            this.pnOptions.Controls.Add(this.button1);
+            this.pnOptions.Controls.Add(this.btSelectFile);
             this.pnOptions.Controls.Add(this.button2);
             this.pnOptions.Controls.Add(this.label4);
             this.pnOptions.Controls.Add(this.textBox2);
@@ -231,6 +232,10 @@
             this.pnOptions.Name = "pnOptions";
             this.pnOptions.Size = new System.Drawing.Size(537, 466);
             this.pnOptions.TabIndex = 18;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -270,5 +275,7 @@
         private Button button3;
         private Panel panel1;
         private Panel pnOptions;
+        private OpenFileDialog openFileDialog1;
+        private Button btSelectFile;
     }
 }

@@ -30,20 +30,20 @@
         {
             this.tbSourceURL = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbInputFileURL = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbMixSourceType = new System.Windows.Forms.ComboBox();
             this.btSelectFile = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.tbOutputDirectory = new System.Windows.Forms.TextBox();
+            this.btSelectOutputDirectory = new System.Windows.Forms.Button();
             this.btnSplit = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
             this.tbSongList = new System.Windows.Forms.TextBox();
             this.lbStatus = new System.Windows.Forms.Label();
             this.ckDeleteTemporal = new System.Windows.Forms.CheckBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btCheckSongList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnOptions = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -57,7 +57,6 @@
             this.tbSourceURL.Name = "tbSourceURL";
             this.tbSourceURL.Size = new System.Drawing.Size(371, 23);
             this.tbSourceURL.TabIndex = 1;
-            this.tbSourceURL.Text = "https://www.youtube.com/watch?v=m4wllxpGKew";
             // 
             // label1
             // 
@@ -69,23 +68,23 @@
             this.label1.Text = "Select Mix source type:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // lbInputFileURL
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Indicate mix file/link source: ";
+            this.lbInputFileURL.AutoSize = true;
+            this.lbInputFileURL.Location = new System.Drawing.Point(27, 76);
+            this.lbInputFileURL.Name = "lbInputFileURL";
+            this.lbInputFileURL.Size = new System.Drawing.Size(191, 15);
+            this.lbInputFileURL.TabIndex = 3;
+            this.lbInputFileURL.Text = "Input the Youtube mix link source: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(27, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(358, 15);
+            this.label3.Size = new System.Drawing.Size(353, 15);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Input the song list (each item with format hh:mm:ss [song name]):";
+            this.label3.Text = "Input the song list (each line with format hh:mm:ss [song name]):";
             // 
             // cbMixSourceType
             // 
@@ -120,21 +119,22 @@
             this.label4.Text = "Output directory:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox2
+            // tbOutputDirectory
             // 
-            this.textBox2.Location = new System.Drawing.Point(27, 376);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(371, 23);
-            this.textBox2.TabIndex = 8;
+            this.tbOutputDirectory.Location = new System.Drawing.Point(27, 376);
+            this.tbOutputDirectory.Name = "tbOutputDirectory";
+            this.tbOutputDirectory.Size = new System.Drawing.Size(371, 23);
+            this.tbOutputDirectory.TabIndex = 8;
             // 
-            // button2
+            // btSelectOutputDirectory
             // 
-            this.button2.Location = new System.Drawing.Point(404, 376);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Select directory";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btSelectOutputDirectory.Location = new System.Drawing.Point(404, 376);
+            this.btSelectOutputDirectory.Name = "btSelectOutputDirectory";
+            this.btSelectOutputDirectory.Size = new System.Drawing.Size(106, 23);
+            this.btSelectOutputDirectory.TabIndex = 9;
+            this.btSelectOutputDirectory.Text = "Select directory";
+            this.btSelectOutputDirectory.UseVisualStyleBackColor = true;
+            this.btSelectOutputDirectory.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSplit
             // 
@@ -160,9 +160,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(27, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 15);
+            this.label5.Size = new System.Drawing.Size(42, 15);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Progress:";
+            this.label5.Text = "Status:";
             // 
             // tbSongList
             // 
@@ -171,13 +171,11 @@
             this.tbSongList.Name = "tbSongList";
             this.tbSongList.Size = new System.Drawing.Size(485, 210);
             this.tbSongList.TabIndex = 13;
-            this.tbSongList.Text = "00:00:00 number 1\r\n00:20:00 number 2\r\n25:45 number 2.5\r\n01:40:00 number 3\r\n300:00" +
-    ":11 number 4";
             // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(88, 10);
+            this.lbStatus.Location = new System.Drawing.Point(75, 10);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(48, 15);
             this.lbStatus.TabIndex = 14;
@@ -193,15 +191,15 @@
             this.ckDeleteTemporal.Text = "Delete temporal files after conversion";
             this.ckDeleteTemporal.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btCheckSongList
             // 
-            this.button3.Location = new System.Drawing.Point(27, 430);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 23);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "1. Check song list";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btCheckSongList.Location = new System.Drawing.Point(27, 430);
+            this.btCheckSongList.Name = "btCheckSongList";
+            this.btCheckSongList.Size = new System.Drawing.Size(108, 23);
+            this.btCheckSongList.TabIndex = 16;
+            this.btCheckSongList.Text = "1. Check song list";
+            this.btCheckSongList.UseVisualStyleBackColor = true;
+            this.btCheckSongList.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel1
             // 
@@ -217,17 +215,17 @@
             // 
             this.pnOptions.Controls.Add(this.label1);
             this.pnOptions.Controls.Add(this.cbMixSourceType);
-            this.pnOptions.Controls.Add(this.button3);
+            this.pnOptions.Controls.Add(this.btCheckSongList);
             this.pnOptions.Controls.Add(this.tbSourceURL);
             this.pnOptions.Controls.Add(this.ckDeleteTemporal);
-            this.pnOptions.Controls.Add(this.label2);
+            this.pnOptions.Controls.Add(this.lbInputFileURL);
             this.pnOptions.Controls.Add(this.tbSongList);
             this.pnOptions.Controls.Add(this.label3);
             this.pnOptions.Controls.Add(this.btnSplit);
             this.pnOptions.Controls.Add(this.btSelectFile);
-            this.pnOptions.Controls.Add(this.button2);
+            this.pnOptions.Controls.Add(this.btSelectOutputDirectory);
             this.pnOptions.Controls.Add(this.label4);
-            this.pnOptions.Controls.Add(this.textBox2);
+            this.pnOptions.Controls.Add(this.tbOutputDirectory);
             this.pnOptions.Location = new System.Drawing.Point(33, 12);
             this.pnOptions.Name = "pnOptions";
             this.pnOptions.Size = new System.Drawing.Size(537, 466);
@@ -257,13 +255,13 @@
         #endregion
         private TextBox tbSourceURL;
         private Label label1;
-        private Label label2;
+        private Label lbInputFileURL;
         private Label label3;
         private ComboBox cbMixSourceType;
         private Button button1;
         private Label label4;
         private TextBox textBox2;
-        private Button button2;
+        private Button btSelectOutputDirectory;
         private Button btnSplit;
         private ProgressBar progressBar1;
         private Label label5;
@@ -277,5 +275,7 @@
         private Panel pnOptions;
         private OpenFileDialog openFileDialog1;
         private Button btSelectFile;
+        private Button btCheckSongList;
+        private TextBox tbOutputDirectory;
     }
 }

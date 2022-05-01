@@ -35,12 +35,13 @@ namespace YoutubeMixSplitter
         {
             lbStatus.Text = "Done!";
             pnOptions.Enabled = true;
+            btnSplit.Enabled = false;
             progressBar.Style = System.Windows.Forms.ProgressBarStyle.Blocks;
             if (ckDeleteTemporal.Checked)
             {
-                if (File.Exists(mp4file))
+                if (File.Exists(mp4file) && sourceURL != mp4file)
                     File.Delete(mp4file);
-                if (File.Exists(mp3file))
+                if (File.Exists(mp3file) && sourceURL != mp3file)
                     File.Delete(mp3file);
             }
             MessageBox.Show("Done! Now you can rock the world", "Important Message");
@@ -63,7 +64,7 @@ namespace YoutubeMixSplitter
 
         private void splitMp3(object sender, DoWorkEventArgs e)
         {
-            Mp3FileHandler.SplitMp3File(songsList, mp3file, outputFolder + "\\mix");
+            Mp3FileHandler.SplitMp3File(songsList, mp3file, outputFolder);
         }
         private void btnSplit_Click(object sender, EventArgs e)
         {
@@ -87,20 +88,20 @@ namespace YoutubeMixSplitter
             switch (cbMixSourceType.SelectedItem.ToString())
             {
                 case "Youtube Video Mix Link":
-                    lbStatus.Text = "Downloading video and converting it to a mp4 file";
+                    lbStatus.Text = "Downloading video and converting it to a mp4 file. Please wait patienly.";
                     bw.DoWork += new DoWorkEventHandler(downloadVideo);
                     bw.RunWorkerAsync();
                     break;
                 case "MP4 Video File":
-                    lbStatus.Text = "Converting mp4 file to mp3";
+                    lbStatus.Text = "Converting mp4 file to mp3.";
                     mp4file = sourceURL;
                     mp3file = outputFolder + "\\" + Path.GetFileNameWithoutExtension(sourceURL)+".mp3";
                     bw.DoWork += new DoWorkEventHandler(convertMp4ToMp3);
                     bw.RunWorkerAsync();
                     break;
                 case "MP3 File":
+                    lbStatus.Text = "Splitting the mp3 file.";
                     mp3file = sourceURL;
-                    
                     bw.DoWork += new DoWorkEventHandler(splitMp3);
                     bw.RunWorkerAsync();
                     break;
@@ -109,16 +110,6 @@ namespace YoutubeMixSplitter
                     progressBar.Style = System.Windows.Forms.ProgressBarStyle.Blocks;
                     break;
             }
-
-
-
-
-
-
-
-
-
-
         }
         private Song[] songsList;
         private void button3_Click(object sender, EventArgs e)
@@ -204,7 +195,6 @@ namespace YoutubeMixSplitter
                 if (!string.IsNullOrEmpty(fileName) && File.Exists(fileName))
                 {
                     tbSourceURL.Text = fileName;
-                    //outputFolder = fileName.Replace(extension, "");
                     MessageBox.Show("Done! Now you can set the cut points below (HH:mm:ss # Name of the song) then click the 'Split Mix button'", "Important Message");
                 }
                 else
@@ -217,8 +207,30 @@ namespace YoutubeMixSplitter
         private void cbMixSourceType_SelectedIndexChanged(object sender, EventArgs e)
         {
             tbSourceURL.Text = "";
+            lbInputFileURL.Text = !(cbMixSourceType.SelectedItem.ToString() == "Youtube Video Mix Link") ? "Input the file mix source: " : "Input the Youtube mix link source: ";            
             btSelectFile.Visible = !(cbMixSourceType.SelectedItem.ToString() == "Youtube Video Mix Link");
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                    {
+                        outputFolder = fbd.SelectedPath;                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was an error with the directory selection", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        outputFolder = "tmp";
+                    }
+                }
+            }
+            tbOutputDirectory.Text = outputFolder;
         }
     }
 }

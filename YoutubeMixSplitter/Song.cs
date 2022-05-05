@@ -71,7 +71,11 @@ namespace YoutubeMixSplitter
             {
                 //MessageBox.Show(match.Value);
                 ostr.RemoveAt(0);
-                this.Name = string.Join(" ",ostr);
+                if (ostr[0].Equals("-"))
+                {
+                    ostr.RemoveAt(0);
+                }
+                this.Name = string.Join(" ",ostr).Trim().Replace("\r","").Replace("\n","");
                 startTime = new SongTime(match.Value);
             }
             else

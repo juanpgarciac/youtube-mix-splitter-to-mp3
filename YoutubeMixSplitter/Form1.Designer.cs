@@ -63,9 +63,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(27, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 15);
+            this.label1.Size = new System.Drawing.Size(140, 15);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Select Mix source type:";
+            this.label1.Text = "1. Select Mix source type:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lbInputFileURL
@@ -73,18 +73,18 @@
             this.lbInputFileURL.AutoSize = true;
             this.lbInputFileURL.Location = new System.Drawing.Point(27, 76);
             this.lbInputFileURL.Name = "lbInputFileURL";
-            this.lbInputFileURL.Size = new System.Drawing.Size(191, 15);
+            this.lbInputFileURL.Size = new System.Drawing.Size(203, 15);
             this.lbInputFileURL.TabIndex = 3;
-            this.lbInputFileURL.Text = "Input the Youtube mix link source: ";
+            this.lbInputFileURL.Text = "2. Input the Youtube mix link source: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(27, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(353, 15);
+            this.label3.Size = new System.Drawing.Size(365, 15);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Input the song list (each line with format hh:mm:ss [song name]):";
+            this.label3.Text = "3. Input the song list (each line with format hh:mm:ss [song name]):";
             // 
             // cbMixSourceType
             // 
@@ -114,9 +114,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(27, 358);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 15);
+            this.label4.Size = new System.Drawing.Size(110, 15);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Output directory:";
+            this.label4.Text = "4. Output directory:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // tbOutputDirectory
@@ -143,7 +143,7 @@
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.Size = new System.Drawing.Size(110, 23);
             this.btnSplit.TabIndex = 10;
-            this.btnSplit.Text = "2. Split the mix";
+            this.btnSplit.Text = "6. Split the mix";
             this.btnSplit.UseVisualStyleBackColor = true;
             this.btnSplit.Click += new System.EventHandler(this.btnSplit_Click);
             // 
@@ -197,7 +197,7 @@
             this.btCheckSongList.Name = "btCheckSongList";
             this.btCheckSongList.Size = new System.Drawing.Size(108, 23);
             this.btCheckSongList.TabIndex = 16;
-            this.btCheckSongList.Text = "1. Check song list";
+            this.btCheckSongList.Text = "5. Check song list";
             this.btCheckSongList.UseVisualStyleBackColor = true;
             this.btCheckSongList.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -243,7 +243,7 @@
             this.Controls.Add(this.pnOptions);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Youtube/Mp4/Mp3 Mix Splitter";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnOptions.ResumeLayout(false);

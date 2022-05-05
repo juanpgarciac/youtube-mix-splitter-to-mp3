@@ -15,7 +15,7 @@ namespace YoutubeMixSplitter
             // change track & title in the file with Id3 info
             var tfile = TagLib.File.Create(filename);
             tfile.Tag.Track = track;
-            tfile.Tag.Title = title;
+            tfile.Tag.Title = title.Trim();
             tfile.Save();
 
         }
@@ -44,7 +44,7 @@ namespace YoutubeMixSplitter
                 Action createWriter = new Action(() => {
                     trackNumber = (curSongIndex + 1);
                     title = curSong.Name;
-                    string newBaseNameForSplit = (curSongIndex + 1).ToString().PadLeft(pad, '0') + " - " + curSong.Name;
+                    string newBaseNameForSplit = (curSongIndex + 1).ToString().PadLeft(pad, '0') +" "+ curSong.Name;
                     newFileName = Path.Combine(destinationPath, CommonFunctions.MakeValidFileName(newBaseNameForSplit) + ".mp3");
                     if (File.Exists(newFileName))
                     {
